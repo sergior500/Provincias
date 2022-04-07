@@ -6,7 +6,7 @@ import java.util.List;
 public class Provincia extends Zona{
 
 
-	private List<Pueblo> listaPueblos= new ArrayList<Pueblo>();
+	private List<Pueblo> ListaPueblos= new ArrayList<Pueblo>();
 	public static final int LONGCOD = 2;
 	
 	public Provincia(String nombre, String codigo) {
@@ -16,9 +16,9 @@ public class Provincia extends Zona{
 	private boolean existePueblo(String nombrePueblo) {
 		Pueblo p1= null;
 		
-		for (int i = 0; i <listaPueblos.size() && p1==null; i++) {
-			if (listaPueblos.get(i).getNombre().equals(nombrePueblo)) {
-				p1=listaPueblos.get(i);
+		for (int i = 0; i <ListaPueblos.size() && p1==null; i++) {
+			if (ListaPueblos.get(i).getNombre().equals(nombrePueblo)) {
+				p1=ListaPueblos.get(i);
 	
 			}
 		}
@@ -33,7 +33,7 @@ public class Provincia extends Zona{
 		if (existePueblo(pu.getNombre())) {
 			throw new ProvinciaException("Error,no se ha podido añadir el pueblo");
 		}else {
-			this.listaPueblos.add(pu);
+			this.ListaPueblos.add(pu);
 			setRentaPerCapital(rentaPerCapital+pu.getRentaPerCapital());
 			setNumeroHabitantes(numeroHabitantes+pu.getNumeroHabitantes());
 			setSuperficie(superficie+pu.getSuperficie());
@@ -43,12 +43,12 @@ public class Provincia extends Zona{
 		return resultado;
 	}
 	public Integer numPueblos () {
-		return this.listaPueblos.size();
+		return this.ListaPueblos.size();
 	}
 	public String listadoNombrePueblos () {
 	
 		StringBuilder sb = new StringBuilder();
-		for (Pueblo i : listaPueblos) {
+		for (Pueblo i : ListaPueblos) {
 			sb.append(i.getNombre()+"\n");
 		}
 		
@@ -58,7 +58,7 @@ public class Provincia extends Zona{
 	public String listadoPueblos () {
 		
 		StringBuilder sb = new StringBuilder();
-		for (Pueblo i : listaPueblos) {
+		for (Pueblo i : ListaPueblos) {
 			sb.append(i+"\n");
 		}
 		
@@ -68,10 +68,10 @@ public class Provincia extends Zona{
 	public boolean delPueblo (String nombre) {
 		boolean res=false;
 		if (existePueblo(nombre)) {
-			for (Pueblo i : listaPueblos) {
+			for (Pueblo i : ListaPueblos) {
 				if (nombre.equals(i.getNombre())) {
 					setRentaPerCapital(rentaPerCapital-i.getRentaPerCapital());
-					this.listaPueblos.remove(nombre);
+					this.ListaPueblos.remove(nombre);
 					res=true;
 				}
 			}
@@ -85,7 +85,7 @@ public class Provincia extends Zona{
 		StringBuilder sb =  new StringBuilder();
 		
 		if (existePueblo(nombre)) {
-			for (Pueblo pueblo : listaPueblos) {
+			for (Pueblo pueblo : ListaPueblos) {
 				if (nombre.equals(pueblo.getNombre())) {
 					sb.append(pueblo);
 				}
