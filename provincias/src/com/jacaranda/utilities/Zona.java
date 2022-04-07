@@ -10,9 +10,9 @@ public abstract class Zona {
 	public Zona(String nombre, String codigo, Integer numeroHabitantes, Double rentaPerCapital, Double superficie) {
 		this.nombre = nombre;
 		this.codigo = codigo;
-		this.numeroHabitantes = numeroHabitantes;
-		this.rentaPerCapital = rentaPerCapital;
-		this.superficie = superficie;
+		setNumeroHabitantes(numeroHabitantes);
+		setRentaPerCapital(rentaPerCapital);
+		setSuperficie(superficie);
 	}
 	public Zona(String nombre, String codigo) {
 		if (nombre==null || codigo==null || codigo.length()!=numCodigo()) {
@@ -54,7 +54,11 @@ public abstract class Zona {
 
 
 	public void setNumeroHabitantes(Integer numeroHabitantes) {
-		this.numeroHabitantes = numeroHabitantes;
+		if (numeroHabitantes<0) {
+			throw new PuebloException("La renta es erronea");
+		}else {			
+			this.numeroHabitantes = numeroHabitantes;
+		}
 	}
 
 
@@ -78,7 +82,11 @@ public abstract class Zona {
 
 
 	public void setSuperficie(Double superficie) {
-		this.superficie = superficie;
+		if (superficie<0) {
+			throw new PuebloException("La renta es erronea");
+		}else {			
+			this.superficie = superficie;
+		}
 	}
 	
 	public abstract int numCodigo();

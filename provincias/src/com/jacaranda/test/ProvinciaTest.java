@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import com.jacaranda.utilities.Provincia;
 import com.jacaranda.utilities.ProvinciaException;
 import com.jacaranda.utilities.Pueblo;
+import com.jacaranda.utilities.PuebloException;
 
 class ProvinciaTest {
 
@@ -88,13 +89,6 @@ class ProvinciaTest {
 
 		
 	}
-	
-	@Test
-	void testCrearPueblo() {
-		
-		
-		
-	}
 	/*
 	@Test
 	void testAnadirProvinciaListaRepetida() {
@@ -112,17 +106,36 @@ class ProvinciaTest {
 	*/
 	
 	@Test
-	void testProvinciaRentaNegativa() {
+	void testPuebloRentaNegativa() {
 		try {
-			
-		} catch (ProvinciaException pe) {
+			Pueblo p1 = new Pueblo("Brenes", "12345", 23, -2.0, 2300.0);
+			assert(false);
+		} catch (PuebloException pe) {
+			assert(true);
+		}
+		
+	}
+	@Test
+	void testPuebloSuperficieNegativa() {
+		try {
+			Pueblo p1 = new Pueblo("Brenes", "12345", 23, 20.00, -2.0);
+			assert(false);
+		} catch (PuebloException pe) {
 			assert(true);
 		}
 		
 	}
 	
-	
-	
+	@Test
+	void testPuebloHabitantesNegativos() {
+		try {
+			Pueblo p1 = new Pueblo("Brenes", "12345", -23, 2.0, 2300.0);
+			assert(false);
+		} catch (PuebloException pe) {
+			assert(true);
+		}
+		
+	}
 	
 
 }
